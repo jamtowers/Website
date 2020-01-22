@@ -1,0 +1,23 @@
+image: node:latest
+
+build:
+  stage: build
+  cache:
+    paths:
+      - node_modules/
+  script:
+    - npm install
+    - ng build --prod
+  artifacts:
+    paths:
+      - dist/
+
+test:
+  stage: test
+  script:
+    # apt-get install chromium-browser
+    ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+    ng e2e -- --protractor-config=e2e/protractor-ci.conf.js
+
+deploy:
+  stage: deploy
