@@ -13,10 +13,12 @@ build:
       - node_modules/
 
   # install npm modules
-  before_script: npm install
+  before_script: 
+    - npm install
 
   # builds angular project in production mode
-  script: npm run build -- --prod
+  script: 
+    - npm run build -- --prod
 
   # defines build artifact
   artifacts:
@@ -25,28 +27,40 @@ build:
 
 # restores dependinces for headless chrome install
 .restore_test_dependinces: &restore_test_dependinces
-- apt-get install gconf-service libasound2 libatk1.0–0 libc6 libcairo2 libcups2 libdbus-1–3 
-  libexpat1 libfontconfig1 libgcc1 libgconf-2–4 libgdk-pixbuf2.0–0 libglib2.0–0 libgtk-3–0 
-  libnspr4 libpango-1.0–0 libpangocairo-1.0–0 libstdc++6 libx11–6 libx11-xcb1 libxcb1 libxcomposite1
-  libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 
-  ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget -y
+  - apt-get install gconf-service libasound2 libatk1.0–0 libc6 libcairo2 libcups2 libdbus-1–3 
+    libexpat1 libfontconfig1 libgcc1 libgconf-2–4 libgdk-pixbuf2.0–0 libglib2.0–0 libgtk-3–0 
+    libnspr4 libpango-1.0–0 libpangocairo-1.0–0 libstdc++6 libx11–6 libx11-xcb1 libxcb1 libxcomposite1
+    libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 
+    ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget -y
 
 unit_tests:
   stage: test
 
-  before_script: *restore_test_dependinces
+  before_script: 
+    - *restore_test_dependinces
 
   # runs unit tests
-  script: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  script: 
+    - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
 
 test_e2e:
   stage: test
   
-  before_script: *restore_test_dependinces
+  before_script:
+    - *restore_test_dependinces
 
   # runs end to end tests
-  script: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+  script: 
+    - npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
 
-# deploy:
-#   stage: deploy
+deploy:
+  stage: deploy
+
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y lftp
+  
+  script:
+    - lftp -e "open ftp://jamestowers.tech; user $FTP_Username $FTP_Password;
+      mirror -X .* -X .*/ --reverse --verbose --delete local-folder/ destination-folder/; bye"
