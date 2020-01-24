@@ -54,13 +54,13 @@ test_e2e:
   script: 
     - npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
 
-deploy:
-  stage: deploy
+# deploy:
+#   stage: deploy
 
-  before_script:
-    - apt-get update -qy
-    - apt-get install -y lftp
+#   before_script:
+#     - apt-get update -qy
+#     - apt-get install -y lftp
   
-  script:
-    - lftp -e "open ftp://jamestowers.tech; user $FTP_Username $FTP_Password;
-      mirror -X .* -X .*/ --reverse --verbose --delete local-folder/ destination-folder/; bye"
+#   script:
+#     - lftp -e "open ftp://jamestowers.tech; user $FTP_Username $FTP_Password;
+#       mirror -X .* -X .*/ --reverse --verbose --delete local-folder/ destination-folder/; bye"
