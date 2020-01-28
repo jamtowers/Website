@@ -31,7 +31,7 @@ stages:
 unit_tests:
   stage: test
 
-  before_script: 
+  before_script:
     - *restore_test_dependinces
     - *restore_project_dependinces
 
@@ -59,7 +59,8 @@ build:
   #     - node_modules/
 
   # install npm modules
-  before_script: 
+  before_script:
+    - *restore_test_dependinces
     - *restore_project_dependinces
 
   # builds angular project in production mode
