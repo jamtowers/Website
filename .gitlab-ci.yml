@@ -10,7 +10,7 @@ stages:
 
 # installs chrome and libaries used for automated testing
 .restore_test_dependinces: &restore_test_dependinces
-  - # Add Google Chrome to aptitude's (package manager) sources
+  # Add Google Chrome to aptitude's (package manager) sources
   - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee -a /etc/apt/sources.list
   # Fetch Chrome's PGP keys for secure installation
   - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
