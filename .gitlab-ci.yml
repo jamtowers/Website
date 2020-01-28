@@ -18,15 +18,15 @@ stages:
   - apt-get -qq update -y
   # Install latest Chrome stable, Xvfb packages
   - apt-get -qq install -y --allow-unauthenticated google-chrome-stable xvfb gtk2-engines-pixbuf xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable imagemagick x11-apps default-jre
-  # Launch Xvfb
-  - Xvfb :0 -ac -screen 0 1024x768x24 &
-  # Export display for Chrome
-  - export DISPLAY=:99
-  # Create symlink of core in webclient (Mac/Ubuntu users)
-  - ln -s ../../../native_client/app/core/ web_client/src/app/core
-  - cd web_client
-  # Download Selenium server JAR, drivers for Chrome
-  - node ./node_modules/.bin/webdriver-manager update
+  # # Launch Xvfb
+  # - Xvfb :0 -ac -screen 0 1024x768x24 &
+  # # Export display for Chrome
+  # - export DISPLAY=:99
+  # # Create symlink of core in webclient (Mac/Ubuntu users)
+  # - ln -s ../../../native_client/app/core/ web_client/src/app/core
+  # - cd web_client
+  # # Download Selenium server JAR, drivers for Chrome
+  # - node ./node_modules/.bin/webdriver-manager update
 
 unit_tests:
   stage: test
