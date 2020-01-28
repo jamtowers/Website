@@ -8,20 +8,32 @@ stages:
 .restore_project_dependinces: &restore_project_dependinces
   - npm install
 
-# restores dependinces for headless chrome install
+# installs chrome and libaries used for automated testing
 .restore_test_dependinces: &restore_test_dependinces
-  - npm install
-  - apt-get update && apt-get install gconf-service libasound2 libatk1.0–0 libc6 libcairo2 libcups2 libdbus-1–3 
-    libexpat1 libfontconfig1 libgcc1 libgconf-2–4 libgdk-pixbuf2.0–0 libglib2.0–0 libgtk-3–0 
-    libnspr4 libpango-1.0–0 libpangocairo-1.0–0 libstdc++6 libx11–6 libx11-xcb1 libxcb1 libxcomposite1
-    libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 
-    ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget -y
+  - # Add Google Chrome to aptitude's (package manager) sources
+  - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee -a /etc/apt/sources.list
+  # Fetch Chrome's PGP keys for secure installation
+  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+  # Update aptitude's package sources
+  - apt-get -qq update -y
+  # Install latest Chrome stable, Xvfb packages
+  - apt-get -qq install -y --allow-unauthenticated google-chrome-stable xvfb gtk2-engines-pixbuf xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable imagemagick x11-apps default-jre
+  # Launch Xvfb
+  - Xvfb :0 -ac -screen 0 1024x768x24 &
+  # Export display for Chrome
+  - export DISPLAY=:99
+  # Create symlink of core in webclient (Mac/Ubuntu users)
+  - ln -s ../../../native_client/app/core/ web_client/src/app/core
+  - cd web_client
+  # Download Selenium server JAR, drivers for Chrome
+  - node ./node_modules/.bin/webdriver-manager update
 
 unit_tests:
   stage: test
 
-  before_script:
+  before_script: 
     - *restore_test_dependinces
+    - *restore_project_dependinces
 
   # runs unit tests
   script:
