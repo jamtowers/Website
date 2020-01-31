@@ -17,6 +17,7 @@ restore_dependencies:
     # install node packages
     - npm ci
     # enable universe repository
+    - apt-get install software-properties-common
     - add-apt-repository universe
     # synchronize package index files
     - apt-get update
