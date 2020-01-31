@@ -1,67 +1,39 @@
 image: node:latest
+
 stages:
+  - restore
   - test
   - build
   #- deploy
 
-# restores dependinces for npm
-.restore_project_dependinces: &restore_project_dependinces
-  - npm install
+cache:
+  paths:
+  - apt-cache/
+  - node_modules/
 
-# installs chrome and libaries used for automated testing
-.restore_test_dependinces: &restore_test_dependinces
-  # Add Google Chrome to aptitude's (package manager) sources
-  - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee -a /etc/apt/sources.list
-  # Fetch Chrome's PGP keys for secure installation
-  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-  # Update aptitude's package sources
-  - apt-get -qq update -y
-  # Install latest Chrome stable, Xvfb packages
-  - apt-get -qq install -y --allow-unauthenticated google-chrome-stable xvfb gtk2-engines-pixbuf xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable imagemagick x11-apps default-jre
-  # # Launch Xvfb
-  # - Xvfb :0 -ac -screen 0 1024x768x24 &
-  # # Export display for Chrome
-  # - export DISPLAY=:99
-  # # Create symlink of core in webclient (Mac/Ubuntu users)
-  # - ln -s ../../../native_client/app/core/ web_client/src/app/core
-  # - cd web_client
-  # # Download Selenium server JAR, drivers for Chrome
-  # - node ./node_modules/.bin/webdriver-manager update
+  restore_dependencies:
+  stage: restore
+  script:
+    # installs node packages
+    - npm ci
+    # installs chromium for ui tests
+    - apt-get dir::cache::archives="apt-cache" install chromium-browser
+
 
 unit_tests:
   stage: test
 
-  before_script:
-    - *restore_test_dependinces
-    - *restore_project_dependinces
-
-  # runs unit tests
   script:
     - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-
 
 test_e2e:
   stage: test
   
-  before_script:
-    - *restore_test_dependinces
-
-  # runs end to end tests
   script:
-    - npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+    - npm run e2e -- --protractor-config=./e2e/protractor-ci.conf.js
 
 build:
   stage: build
-
-  # # caches npm modules
-  # cache:
-  #   paths:
-  #     - node_modules/
-
-  # install npm modules
-  before_script:
-    - *restore_test_dependinces
-    - *restore_project_dependinces
 
   # builds angular project in production mode
   script:
