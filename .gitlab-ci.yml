@@ -20,7 +20,9 @@ restore_dependencies:
     - apt-get update
     # enable universe repository
     - apt-get install -y software-properties-common
-    - add-apt-repository universe
+    - add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
+    # synchronize package index files
+    - apt-get update
     # install chromium for ui tests
     - apt-get -o dir::cache::archives="apt-cache" install -y chromium-browser
 
