@@ -18,17 +18,17 @@ restore_dependencies:
     - npm ci
     # synchronize package index files
     - apt-get update
-    # enable universe repository
-    - apt-get install -y software-properties-common
-    - add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
-    # synchronize package index files
-    - apt-get update
-    # install chromium for ui tests
-    - apt-get -o dir::cache::archives="apt-cache" install -y chromium-browser
+    # install libraries required for chrome
+    - apt-get -o dir::cache::archives="apt-cache" install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils
 
 
 unit_tests:
   stage: test
+
+  #install chrome for tests
+  before_script:
+    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
   script:
     - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
@@ -36,6 +36,11 @@ unit_tests:
 test_e2e:
   stage: test
   
+  #install chrome for tests
+  before_script:
+    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+    
   script:
     - npm run e2e -- --protractor-config=./e2e/protractor-ci.conf.js
 
