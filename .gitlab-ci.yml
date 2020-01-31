@@ -16,6 +16,8 @@ restore_dependencies:
   script:
     # installs node packages
     - npm ci
+    # synchronize package index files
+    - apt-get update
     # installs chromium for ui tests
     - apt-get -o dir::cache::archives="apt-cache" install -y chromium-browser
 
