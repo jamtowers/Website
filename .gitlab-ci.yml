@@ -17,7 +17,7 @@ restore_dependencies:
     # installs node packages
     - npm ci
     # installs chromium for ui tests
-    - apt-get dir::cache::archives="apt-cache" install chromium-browser
+    - apt-get -o dir::cache::archives="apt-cache" install -y chromium-browser
 
 
 unit_tests:
