@@ -11,7 +11,7 @@ cache:
   - apt-cache/
   - node_modules/
 
-  restore_dependencies:
+restore_dependencies:
   stage: restore
   script:
     # installs node packages
