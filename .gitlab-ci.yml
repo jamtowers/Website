@@ -27,7 +27,8 @@ unit_tests:
 
   #install chrome for tests
   before_script:
-    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - apt-get check
+    - wget -nv https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
   script:
@@ -38,9 +39,10 @@ test_e2e:
   
   #install chrome for tests
   before_script:
-    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - apt-get check
+    - wget -nv https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
-    
+
   script:
     - npm run e2e -- --protractor-config=./e2e/protractor-ci.conf.js
 
