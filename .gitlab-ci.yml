@@ -8,7 +8,6 @@ stages:
 
 cache:
   paths:
-  - apt-cache/
   - node_modules/
 
 restore_dependencies:
@@ -16,20 +15,22 @@ restore_dependencies:
   script:
     # install node packages
     - npm ci
-    # synchronize package index files
-    - apt-get update
-    # install libraries required for chrome
-    - apt-get -o dir::cache::archives="apt-cache" install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils
 
+.install_chrome: &install_chrome
+  # synchronize package index files
+  - apt-get update
+  # install libraries required for chrome
+  - apt-get install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils
+  # download chrome package
+  - wget -nv https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  # install chrome
+  - dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
 unit_tests:
   stage: test
 
   #install chrome for tests
-  before_script:
-    - apt-get check
-    - wget -nv https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    - dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+  before_script: *install_chrome
 
   script:
     - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
@@ -38,10 +39,7 @@ test_e2e:
   stage: test
   
   #install chrome for tests
-  before_script:
-    - apt-get check
-    - wget -nv https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    - dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+  before_script: *install_chrome
 
   script:
     - npm run e2e -- --protractor-config=./e2e/protractor-ci.conf.js
