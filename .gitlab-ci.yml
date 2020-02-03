@@ -65,4 +65,4 @@ deploy:
   
   script:
     - lftp -e "set ssl:verify-certificate no; open ftp://jamestowers.tech; user $FTP_Username $FTP_Password;
-      mirror --reverse --verbose --delete dist/ public_html/; bye"
+      mirror --reverse --verbose --delete dist/OnlineResume /; bye"
