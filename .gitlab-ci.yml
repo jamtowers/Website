@@ -69,19 +69,19 @@ deploy:
     - apt-get update -qy
     - apt-get install -y lftp
   
+  # ftp command 
   script:
-    # ftp command 
     - lftp -e "
-      # set to not verify ssl certificate (as hostinger uses a generic one)
       set ssl:verify-certificate no;
-      # open ftp connection
       open ftp://jamestowers.tech;
-      # ftp username and password
       user $FTP_Username $FTP_Password;
-      # mirror (duplicate the directory), reverse (upload rather then download), 
-      # verbose (tell me all the things), delete (Delete any existing files in directory getting sent to)
       mirror --reverse --verbose --delete
-      # file paths to be sent/recived
       dist/OnlineResume/ /domains/jamestowers.tech/public_html/;
-      # close connection
       bye"
+      # set to not verify ssl certificate (as hostinger uses a generic one)
+      # open ftp connection
+      # ftp username and password
+      # mirror (duplicate the directory), reverse (upload rather then download),
+      # verbose (tell me all the things), delete (Delete any existing files in directory getting sent to)
+      # file paths to be sent/recived
+      # close connection
