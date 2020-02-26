@@ -20,7 +20,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     ReactiveFormsModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ]
 })
 export class ContactModule { }
