@@ -26,18 +26,18 @@ export class ContactComponent implements OnInit {
   }
 
   contactForm = new FormGroup({
-    name: new FormControl('James Towers', [
+    name: new FormControl('', [
       Validators.required,
       Validators.maxLength(50)
     ]),
-    subject: new FormControl('Test', [
+    subject: new FormControl('', [
       Validators.maxLength(50)
     ]),
-    email: new FormControl('test@email.com', [
+    email: new FormControl('', [
       Validators.required,
       Validators.email
     ]),
-    content: new FormControl('This is a test message', [
+    content: new FormControl('', [
       Validators.required,
       Validators.maxLength(1000)
     ])
