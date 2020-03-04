@@ -20,6 +20,7 @@ export class ContactComponent implements OnInit {
 
   loading: boolean = false;
   error: string = '';
+  message: string = '';
 
   ngOnInit() {
     this.titleService.setTitle( "James Towers - Contact" );
@@ -52,8 +53,17 @@ export class ContactComponent implements OnInit {
   get content() { return this.contactForm.get('content'); }
 
   onSubmit() {
+    //show loading indicator
     this.loading = true;
+    //clear error message if one exists
     this.error = '';
+
+    //If sending message takes longer then 5 seconds, display message
+    var longLoadTimeout = setTimeout(() => {
+      this.message = "Your message is still sending! The server can take some time to send messages if it hasn't for a while, give it a moment to get going."; 
+    }, 5000);
+
+    //Send message request
     const request = this.messageService.sendMessage(this.contactForm.value).subscribe(event => {
       switch (event.type) {
         case HttpEventType.Sent:
@@ -67,7 +77,6 @@ export class ContactComponent implements OnInit {
         case HttpEventType.Response:
           console.log("Done!");
           this.loading = false;
-          request.unsubscribe();
           this.snackBar.open("Message Sent!", null, {
             duration: 5000
           });
@@ -92,7 +101,10 @@ export class ContactComponent implements OnInit {
             break;
         }
       }
+    }, () => { //cleanup after requrest is complete
       request.unsubscribe();
+      clearTimeout(longLoadTimeout);
+      this.message = '';
     })
   }
 }
