@@ -53,6 +53,7 @@ export class ContactComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
+    this.error = '';
     const request = this.messageService.sendMessage(this.contactForm.value).subscribe(event => {
       switch (event.type) {
         case HttpEventType.Sent:
