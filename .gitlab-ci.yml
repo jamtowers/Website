@@ -87,7 +87,7 @@ deploy:
       set ssl:verify-certificate no;
       open ftp://jamestowers.tech;
       user $FTP_Username $FTP_Password;
-      mirror --reverse --verbose --delete
+      mirror --reverse --verbose --delete --exclude-glob='/domains/jamestowers.tech/public_html/nextcloud/*'
       dist/OnlineResume/ /domains/jamestowers.tech/public_html/;
       bye"
       # set to not verify ssl certificate (as hostinger uses a generic one)
@@ -95,6 +95,7 @@ deploy:
       # ftp username and password
       # mirror (duplicate the directory), reverse (upload rather then download),
       # verbose (tell me all the things), delete (Delete any existing files in directory getting sent to)
+      # exclude-glob exclude folder path
       # file paths to be sent/recived
       # close connection
 
