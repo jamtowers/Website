@@ -12,8 +12,5 @@ RewriteRule ^ - [L]
 # If the requested resource doesn't exist, use index.html
 RewriteRule ^ /index.html
 
-#maxium memory setting
-php_value memory_limit 512M
-
 #Maxium file upload
 php_value upload_max_filesize 1G
