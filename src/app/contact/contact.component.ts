@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ContactComponent implements OnInit {
 
-  @ViewChild('autosize', {static: false}) autosize: CdkTextareaAutosize;
+  @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
   constructor(private titleService: Title, private messageService: MessageService, private snackBar: MatSnackBar) { }
 
