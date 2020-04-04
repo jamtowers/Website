@@ -14,3 +14,7 @@ RewriteRule ^ /index.html
 
 #Maxium file upload
 php_value upload_max_filesize 1G
+php_value post_max_size 1G
+
+# Security header Enable HSTS
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
