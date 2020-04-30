@@ -65,7 +65,7 @@ build:
   # defines build artifact
   artifacts:
     paths:
-      - dist/OnlineResume/
+      - dist/Website/
 
   only:
     - master
@@ -88,7 +88,7 @@ deploy:
       open ftp://jamestowers.tech;
       user $FTP_Username $FTP_Password;
       mirror --reverse --verbose --delete --exclude-glob='nextcloud/**'
-      dist/OnlineResume/ /domains/jamestowers.tech/public_html/;
+      dist/Website/ /domains/jamestowers.tech/public_html/;
       bye"
       # set to not verify ssl certificate (as hostinger uses a generic one)
       # open ftp connection
