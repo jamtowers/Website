@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Observable } from 'rxjs';
+import { Message } from './message';
 
 @Injectable({
   providedIn: 'root'

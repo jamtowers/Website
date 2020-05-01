@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ContactComponent } from './contact.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpHandler, HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
+
+import { ContactComponent } from './contact.component';
 
 describe('ContactComponent', () => {
   let component: ContactComponent;
@@ -16,7 +16,12 @@ describe('ContactComponent', () => {
       imports: [ ReactiveFormsModule ],
       declarations: [ ContactComponent ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-      providers: [HttpHandler, HttpClient, MatSnackBar, Overlay]
+      providers: [
+        HttpHandler, 
+        HttpClient, 
+        MatSnackBar, 
+        Overlay
+      ]
     })
     .compileComponents();
   }));
@@ -28,6 +33,6 @@ describe('ContactComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeDefined();
   });
 });
