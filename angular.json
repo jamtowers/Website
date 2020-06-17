@@ -26,7 +26,8 @@
             "assets": [
               "src/favicon.ico",
               "src/.htaccess",
-              "src/assets"
+              "src/assets",
+              "src/php"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",

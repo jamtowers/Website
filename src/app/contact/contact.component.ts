@@ -58,11 +58,6 @@ export class ContactComponent implements OnInit {
     //clear error message if one exists
     this.error = '';
 
-    //If sending message takes longer then 5 seconds, display message
-    var longLoadTimeout = setTimeout(() => {
-      this.message = "Your message is still sending! The server can take some time to send messages if it hasn't for a while, give it a moment to get going."; 
-    }, 5000);
-
     //Send message request
     const request = this.messageService.sendMessage(this.contactForm.value).subscribe(event => {
       switch (event.type) {
@@ -88,22 +83,21 @@ export class ContactComponent implements OnInit {
         // A client-side or network error
         this.error = error.message;
       } else {
-        //server error
+        // server error
         switch(error.status){
           case 429:
-            this.error = "Too many requests from this address, please try again in an hour";
+            this.error = "Too many requests received, please try again in an hour.";
             break;
           case 500:
-            this.error = "Server can't seem to send the message at the moment, Please try again later";
+            this.error = "Server can't seem to send the message at the moment, Please try again later.";
             break;
           default:
-            this.error = "The server experienced an unexpected error, Please try again later"
+            this.error = "The server experienced an unexpected error, Please try again later."
             break;
         }
       }
-    }, () => { //cleanup after requrest is complete
+    }, () => { // cleanup after requrest is complete
       request.unsubscribe();
-      clearTimeout(longLoadTimeout);
       this.message = '';
     })
   }
