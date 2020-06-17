@@ -11,7 +11,7 @@ export class MessageService {
   constructor(private http: HttpClient) { }
 
   public sendMessage(message: Message) : Observable<HttpEvent<any>> {
-    return this.http.post('https://jamestowers.tech/php/sendEmail.php', message,
+    return this.http.post("https://" + window.location.hostname + '/php/sendEmail.php', message,
     { //http options
       responseType: "blob",
       reportProgress: true,
