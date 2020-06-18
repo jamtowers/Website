@@ -60,7 +60,7 @@ build:
 
   script:
     # Replace fake email address with real one
-    - sed -i 's/fake@email.com/$Email_Address/1' ./src/php/sendEmail.php
+    - sed -i "s/fake@email.com/$Email_Address/1" ./src/php/sendEmail.php
     # build angular project in production mode
     - npm run build -- --prod
 
