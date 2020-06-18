@@ -20,6 +20,7 @@ restore_dependencies:
 
   only:
     - master
+    - development
 
 .install_chrome: &install_chrome
   # synchronize package index files
@@ -42,6 +43,7 @@ unit_tests:
 
   only:
     - master
+    - development
 
 test_e2e:
   stage: test
@@ -71,6 +73,7 @@ build:
 
   only:
     - master
+    - development
 
 deploy:
   stage: deploy
