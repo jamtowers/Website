@@ -7,6 +7,8 @@ import { AboutComponent } from './about/about.component';
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule) },
+  { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) },
+  { path: 'portfolio', loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule) },
   { path: '',
     redirectTo: '/about',
     pathMatch: 'full'
