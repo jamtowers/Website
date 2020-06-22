@@ -1,0 +1,30 @@
+@import '~@angular/material/theming';
+
+@mixin app-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  // Inline link colouring
+  a:not(.mat-list-item):not(.mat-button-base) {
+    color: mat-color($accent);
+
+    &:hover { // mouse over
+      color: mat-color($accent, lighter);
+    }
+
+    &:active { // during click
+      color: mat-color($accent, darker);
+    }
+  }
+}
+
+// typography editing isn't needed atm
+// @mixin app-typography($config) {
+//   a {
+//     font: {
+//       family: mat-font-family($config, body-1);
+//       size: mat-font-size($config, body-1);
+//       weight: mat-font-weight($config, body-1);
+//     }
+//   }
+// }

@@ -16,6 +16,21 @@ footer {
   text-align: center;
 }
 
-a {
-    color: lightblue;
+/// Angular Material Overrides
+// sidebar
+.mat-drawer-inner-container {
+  
+  .mat-expansion-panel-header {
+    padding: 0 16px !important;
+    font-size: 16px;
+  }
+
+  .mat-expansion-panel-body {
+    padding: 0;
+
+    &>a>div {
+      padding: 0 24px !important;
+      font-size: 15px;
+    }
+  }
 }
