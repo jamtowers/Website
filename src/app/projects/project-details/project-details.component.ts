@@ -12,7 +12,8 @@ import { Clipboard } from '@angular/cdk/clipboard';
 })
 export class ProjectDetailsComponent implements OnInit {
   project: Project;
-  loading: boolean = true;
+  ploading: boolean = true;
+  mdloading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,7 +34,7 @@ export class ProjectDetailsComponent implements OnInit {
 
             this.titleService.setTitle( "James Towers - " + this.project.name );
 
-            this.loading = false;
+            this.ploading = false;
           });
       });
   }
@@ -48,6 +49,6 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   onLoad() {
-    this.loading = false;
+    this.mdloading = false;
   }
 }

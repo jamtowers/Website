@@ -1,4 +1,6 @@
-<main *ngIf="!loading">
+<mat-progress-bar *ngIf="ploading" mode="indeterminate"></mat-progress-bar>
+
+<main *ngIf="!ploading">
   <header>
     <h1>{{project.name}}</h1>
     <span class="spacer"></span>
@@ -17,7 +19,7 @@
   
   <mat-divider></mat-divider>
 
-  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <mat-progress-bar *ngIf="mdloading" mode="indeterminate"></mat-progress-bar>
 
   <markdown [src]="'assets/projects/' + project.markdown" (load)="onLoad()"></markdown>
 
