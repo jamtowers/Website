@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Future Project",
+    "type": "Secret :)",
+    "dateAdded": "30/06/2020",
+    "description": "This is a placeholder for a future project, More information to come when there is something to see.",
+    "markdown": "secret.md"
+  },
+  {
+    "name": "This Website",
+    "type": "Angular Web App",
+    "dateAdded": "30/06/2020",
+    "description": "Yes, The website your currently using. I put plenty of time into it so there are interesting details to mention.",
+    "imageName": "website.png",
+    "gitHubPath": "jamtowers/Website",
+    "markdown": "website.md"
+  },
+  {
+    "name": "DGHA Project",
+    "type": "Mobile/Web App",
+    "dateAdded": "30/06/2020",
+    "description": "DGHA project was the final and largest project for my Software Development Diploma.",
+    "markdown": "DGHA.md"
+  }
+]

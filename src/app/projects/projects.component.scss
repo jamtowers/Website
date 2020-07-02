@@ -1,0 +1,42 @@
+mat-card {
+  width: 22em;
+  margin: 10px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  &>* {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.material-icons.mat-card-image {
+  text-align: center;
+  align-content: center;
+  font-size: 5em;
+  height: 2.4em;
+  line-height: 2.4em;
+}
+
+::ng-deep .mat-card-header-text {
+  margin: 0 !important;
+}
+a>img:hover {
+  filter: brightness(110%);
+}
+a>mat-icon:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+mat-card-actions {
+  display: flex;
+  align-items: center;
+}
+
+.textIcon {
+  height: 1.7em;
+  margin-top: -3px;
+}

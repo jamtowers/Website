@@ -1,0 +1,22 @@
+<main *ngIf="!loading">
+  <header>
+    <h1>{{project.name}}</h1>
+    <span class="spacer"></span>
+    <span style="display: flex; align-items: center;">
+      <button mat-button title="Copy current link to share" (click)="copyLink()">
+        <mat-icon>share</mat-icon>&nbsp; Copy link
+      </button>
+      <a *ngIf="project.gitHubPath" mat-button title="Go to GitHub Repository" href="https://github.com/{{project.gitHubPath}}">
+        <img class="textIcon" src="assets/images/GitHub-Mark.svg" />GitHub Repo
+      </a>
+    </span>
+  </header>
+  <p>
+    Added: {{project.dateAdded}}<span *ngIf="project.dateUpdated"> | Updated: {{project.dateUpdated}}</span>
+  </p>
+  
+  <mat-divider></mat-divider>
+
+  <markdown [src]="'assets/projects/' + project.markdown"></markdown>
+
+</main>

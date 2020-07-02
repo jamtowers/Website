@@ -1,1 +1,31 @@
-<p>projects works!</p>
+<main>
+  <h1>Projects</h1>
+
+  <p>These are all the public projects I'm involved with, they're in no particular order (though probably more or less in chronological order)</p>
+  <div class="cards">
+    <mat-card *ngFor="let project of projects">
+      <a [title]="project.name + ' details'" [routerLink]="project.name">
+        <img *ngIf="project.imageName" mat-card-image src="assets/images/{{project.imageName}}">
+        <mat-icon *ngIf="!project.imageName" mat-card-image>landscape</mat-icon>
+      </a>
+      <mat-card-header>
+        <mat-card-title>{{project.name}}</mat-card-title>
+        <mat-card-subtitle>{{project.type}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{project.description}}</p>
+      </mat-card-content>
+      <span class="spacer"></span>
+      <mat-card-actions>
+        <a [routerLink]="project.name" mat-button>View Details</a>
+        <span class="spacer"></span>
+        <a *ngIf="project.gitHubPath" mat-icon-button href="https://github.com/{{project.gitHubPath}}">
+          <img class="textIcon" src="assets/images/GitHub-Mark.svg" />
+        </a>
+        <button mat-icon-button>
+          <mat-icon>share</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</main>
