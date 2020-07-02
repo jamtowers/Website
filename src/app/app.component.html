@@ -8,14 +8,14 @@
   </button>
   <span>&nbsp;James Towers</span>
   <span class="spacer"></span>
-  <a mat-icon-button routerLink="/contact" aria-label="Contact">
+  <a mat-icon-button title="Go to Contact Page" routerLink="/contact" aria-label="Contact">
     <mat-icon class="mailIcon">mail</mat-icon>
   </a>
-  <a mat-icon-button href="https://github.com/jamtowers" aria-label="GitHub">
-    <img src="../assets/GitHub-Mark-Light-32px.png" />
+  <a mat-icon-button title="Go to my GitHub Page" href="https://github.com/jamtowers" aria-label="GitHub">
+    <img height="32px" src="assets/images/GitHub-Mark.svg" />
   </a>
-  <a mat-icon-button href="https://www.linkedin.com/in/james-towers-62922a19b/" aria-label="Linkedin">
-    <img height="32px" width="37.6px" src="../assets/LI-In-Bug-white.png" />
+  <a mat-icon-button title="Go to my LinkedIn page" href="https://www.linkedin.com/in/james-towers-62922a19b/" aria-label="Linkedin">
+    <img height="32px" src="assets/images/LI-In-Bug-white.png" />
   </a>
 </mat-toolbar>
 
@@ -25,34 +25,30 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-nav-list>
-      <a mat-list-item routerLink="/about" class="selected">About</a>
-      <mat-expansion-panel class="mat-elevation-z0">
+      <a mat-list-item routerLink="/about" routerLinkActive="selected">About</a>
+      <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="selected">
         <mat-expansion-panel-header>
           <mat-panel-title>Projects</mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-list-item routerLink="/projects" class="selected">Overview</a>
-        <a mat-list-item routerLink="/projects">Project1</a>
-        <a mat-list-item routerLink="/projects">Project2</a>
-        <a mat-list-item routerLink="/projects">Project3</a>
+        <a mat-list-item routerLink="/projects" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">Overview</a>
+        <a *ngFor="let project of projects" mat-list-item routerLink="/projects/{{project.name}}" routerLinkActive="selected">{{project.name}}</a>
       </mat-expansion-panel>
-      <mat-expansion-panel class="mat-elevation-z0">
+      <!-- <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="selected">
         <mat-expansion-panel-header>
           <mat-panel-title>Portfolio</mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-list-item routerLink="/portfolio">Noteworthy Projects</a>
-        <a mat-list-item routerLink="/portfolio">Concepts</a>
-        <a mat-list-item routerLink="/portfolio">Languages</a>
-        <a mat-list-item routerLink="/portfolio">Frameworks</a>
-      </mat-expansion-panel>
-      <!-- <a mat-list-item routerLink="/reference">Reference</a> -->
-      <a mat-list-item routerLink="/contact">Contact</a>
+        <a mat-list-item routerLink="/portfolio" routerLinkActive="selected">Noteworthy Achevements</a>
+        <a mat-list-item routerLink="/portfolio" routerLinkActive="selected">Concepts</a>
+        <a mat-list-item routerLink="/portfolio" routerLinkActive="selected">Languages</a>
+        <a mat-list-item routerLink="/portfolio" routerLinkActive="selected">Frameworks</a>
+      </mat-expansion-panel> -->
+      <!-- <a mat-list-item routerLink="/reference" routerLinkActive="selected">Reference</a> -->
+      <a mat-list-item routerLink="/contact" routerLinkActive="selected">Contact</a>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content class="content">
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+    <router-outlet></router-outlet>
     <span class="spacer"></span>
     <footer color="primary">
       Copyright 2020 James Towers &copy;

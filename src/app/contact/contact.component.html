@@ -1,92 +1,93 @@
-<h1>Contact</h1>
-<form class="form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input
-      matInput
-      type="text"
-      formControlName="name"
-      required
-      maxlength="50"
-    />
-    <mat-hint [class.limit]="name.value.length == 50" align="end">{{name.value.length}} / 50</mat-hint>
-    <mat-error *ngIf="name.errors?.maxlength && !name.errors?.required">
-      Woh! Most browsers wouldn't let you to input such a long name, in any case the api request will bounce if you try to send this so please shorten it.
-    </mat-error>
-    <mat-error *ngIf="name.errors?.required">
-      Name is required, I want to know who is contacting me :)
-    </mat-error>
-  </mat-form-field>
-  
-  <mat-form-field>
-    <mat-label>Subject</mat-label>
-    <input
-      matInput
-      type="text"
-      formControlName="subject"
-      maxlength="50"
-    />
-    <mat-error *ngIf="subject.errors?.maxlength">
-      Woh! Most browsers wouldn't let you to input such a long subject, in any case the api request will bounce if you try to send this so please shorten it.
-    </mat-error>
-    <mat-hint align="start">Optional</mat-hint>
-    <mat-hint [class.limit]="subject.value.length == 50" align="end">{{subject.value.length}} / 50</mat-hint>
-  </mat-form-field>
-  
-  <mat-form-field>
-    <mat-label>Email Address</mat-label>
-    <input
-      matInput
-      type="email"
-      formControlName="email"
-      placeholder="example@email.com"
-      required
-    />
-    <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
-      Invalid email address
-    </mat-error>
-    <mat-error *ngIf="email.hasError('required')">
-      Email is required, I want to be able to get back to you :)
-    </mat-error>
-  </mat-form-field>
-  
-  <mat-form-field>
-    <mat-label>Message</mat-label>
-    <textarea
-      matInput
-      formControlName="content"
-      required
-      maxlength="1000"
-      cdkTextareaAutosize
-      cdkAutosizeMinRows="2"
-      cdkAutosizeMaxRows="5"
-    ></textarea>
-    <mat-hint [class.limit]="content.value.length == 1000" align="end">{{content.value.length}} / 1000</mat-hint>
-    <mat-error *ngIf="content.errors?.maxlength && !content.errors?.required">
-      Woh! Most browsers wouldn't let you to input such a long message, in any case the api request will bounce if you try to send this so please shorten it.
-    </mat-error>
-    <mat-error *ngIf="content.errors?.required">
-      Message is required, Defeats the point of it if you don't add one don't you think? :)
-    </mat-error>
-  </mat-form-field>
+<main>
+  <h1>Contact</h1>
+  <form class="form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        required
+        maxlength="50"
+      />
+      <mat-hint [class.limit]="name.value.length == 50" align="end">{{name.value.length}} / 50</mat-hint>
+      <mat-error *ngIf="name.errors?.maxlength && !name.errors?.required">
+        Woh! Most browsers wouldn't let you to input such a long name, in any case the api request will bounce if you try to send this so please shorten it.
+      </mat-error>
+      <mat-error *ngIf="name.errors?.required">
+        Name is required, I want to know who is contacting me :)
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Subject</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="subject"
+        maxlength="50"
+      />
+      <mat-error *ngIf="subject.errors?.maxlength">
+        Woh! Most browsers wouldn't let you to input such a long subject, in any case the api request will bounce if you try to send this so please shorten it.
+      </mat-error>
+      <mat-hint align="start">Optional</mat-hint>
+      <mat-hint [class.limit]="subject.value.length == 50" align="end">{{subject.value.length}} / 50</mat-hint>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Email Address</mat-label>
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+        placeholder="example@email.com"
+        required
+      />
+      <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+        Invalid email address
+      </mat-error>
+      <mat-error *ngIf="email.hasError('required')">
+        Email is required, I want to be able to get back to you :)
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Message</mat-label>
+      <textarea
+        matInput
+        formControlName="content"
+        required
+        maxlength="1000"
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="2"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+      <mat-hint [class.limit]="content.value.length == 1000" align="end">{{content.value.length}} / 1000</mat-hint>
+      <mat-error *ngIf="content.errors?.maxlength && !content.errors?.required">
+        Woh! Most browsers wouldn't let you to input such a long message, in any case the api request will bounce if you try to send this so please shorten it.
+      </mat-error>
+      <mat-error *ngIf="content.errors?.required">
+        Message is required, Defeats the point of it if you don't add one don't you think? :)
+      </mat-error>
+    </mat-form-field>
 
-  <mat-progress-bar 
-    *ngIf="loading"
-    [mode]="error ? 'determinate' : 'indeterminate'"
-    [color]="error ? 'warn' : 'primary'"
-    value="100"
-  ></mat-progress-bar>
-  <mat-error *ngIf="error">
-    {{error}}
-  </mat-error>
-  <p *ngIf="message">
-    {{message}}
-  </p>
-
-
-  <button
-    mat-raised-button
-    type="submit"
-    [disabled]="!contactForm.valid || loading && !error"
-  >{{loading ?  error ? 'Retry' : 'Sending...' : 'Submit' }}</button>
-</form>
+    <mat-progress-bar 
+      *ngIf="loading"
+      [mode]="error ? 'determinate' : 'indeterminate'"
+      [color]="error ? 'warn' : 'primary'"
+      value="100"
+    ></mat-progress-bar>
+    <mat-error *ngIf="error">
+      {{error}}
+    </mat-error>
+    <p *ngIf="message">
+      {{message}}
+    </p>
+    
+    <button
+      mat-raised-button
+      type="submit"
+      [disabled]="!contactForm.valid || loading && !error"
+    >{{loading ?  error ? 'Retry' : 'Sending...' : 'Submit' }}</button>
+  </form>
+</main>
