@@ -17,6 +17,8 @@
   
   <mat-divider></mat-divider>
 
-  <markdown [src]="'assets/projects/' + project.markdown"></markdown>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+  <markdown [src]="'assets/projects/' + project.markdown" (load)="onLoad()"></markdown>
 
 </main>

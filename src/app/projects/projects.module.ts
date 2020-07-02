@@ -7,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { SecurityContext } from '@angular/core';
 import { MarkedOptions, MarkdownModule, MarkedRenderer } from 'ngx-markdown';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { ProjectsComponent } from './projects.component';
@@ -42,6 +43,7 @@ export function markedOptionsFactory(): MarkedOptions {
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
+    MatProgressBarModule,
     ClipboardModule,
     MarkdownModule.forRoot({
       sanitize: SecurityContext.NONE,

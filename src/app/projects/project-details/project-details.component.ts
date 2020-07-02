@@ -47,4 +47,7 @@ export class ProjectDetailsComponent implements OnInit {
     }
   }
 
+  onLoad() {
+    this.loading = false;
+  }
 }
