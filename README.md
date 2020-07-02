@@ -2,13 +2,13 @@
 
 https://jamestowers.tech
 
-This is the website I'm using as a portfolio/place to put my public facing projects, The rest of this readme details how this app hangs together and is fairly technical, so if your not looking for that you probably won't get much from the test of this.
+This is the website I'm using as a portfolio/place to put my public facing projects, It's probably more complicated then it needs to be, but I like over-doing my own projects to keep things interesting.
 
 <sub>This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.</sub>
 
 ## Stack
 
-This app is built on [Angular](https://angular.io/) which also handles the user facing routing, the app itself it deployed on a [Apache](https://www.apache.org/) server and uses [php](https://www.php.net/) for the very limited amount of server side processing there is.
+This app is built on [Angular](https://angular.io/) which also handles the user facing routing, the app itself it deployed on an [Apache](https://www.apache.org/) server and uses [php](https://www.php.net/) for the very limited amount of server side processing there is.
 
 Currently there is no database because there is next to no data I need to track, this may change.
 
@@ -47,6 +47,10 @@ The rest of the css config is in `styles.scss` (which has all the global css) an
 
 - [Material Palette Generator](https://material.io/design/color/the-color-system.html#tools-for-picking-colors)
 - [Colour Tool](https://material.io/resources/color/)
+
+## Page Generation
+
+Project pages are acutally created from a json file that references the text and images it uses, The text on the project details page are generated from markdown files using [ngx-markdown](https://github.com/jfcere/ngx-markdown).
 
 ## Unit tests
 
