@@ -26,14 +26,14 @@
       [opened]="(isHandset$ | async) === false">
     <mat-nav-list>
       <a mat-list-item routerLink="/about" routerLinkActive="selected">About</a>
-      <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="selected">
+      <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="selected" #prdd="routerLinkActive" [expanded]="prdd.isActive ? true : false">
         <mat-expansion-panel-header>
           <mat-panel-title>Projects</mat-panel-title>
         </mat-expansion-panel-header>
         <a mat-list-item routerLink="/projects" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">Overview</a>
         <a *ngFor="let project of projects" mat-list-item routerLink="/projects/{{project.name}}" routerLinkActive="selected">{{project.name}}</a>
       </mat-expansion-panel>
-      <!-- <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="selected">
+      <!-- <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="selected" #podd="routerLinkActive" [expanded]="podd.isActive ? true : false">
         <mat-expansion-panel-header>
           <mat-panel-title>Portfolio</mat-panel-title>
         </mat-expansion-panel-header>
