@@ -22,7 +22,7 @@
         <a *ngIf="project.gitHubPath" mat-icon-button href="https://github.com/{{project.gitHubPath}}">
           <img class="textIcon" src="assets/images/GitHub-Mark.svg" />
         </a>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="copyLink(project.name)">
           <mat-icon>share</mat-icon>
         </button>
       </mat-card-actions>

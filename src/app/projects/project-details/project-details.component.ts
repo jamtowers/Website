@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from '../project';
 import { ProjectsService } from '../projects.service';
 import { Title } from '@angular/platform-browser';
-import { Clipboard } from '@angular/cdk/clipboard'; 
+import { Clipboard } from '@angular/cdk/clipboard';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-project-details',
@@ -19,7 +20,8 @@ export class ProjectDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private projectsService: ProjectsService,
     private titleService: Title,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -41,10 +43,14 @@ export class ProjectDetailsComponent implements OnInit {
   
   copyLink() {
     if(this.clipboard.copy(window.location.href)) {
-      console.log("success");
+      this.snackBar.open("Copied to clipboard!", null, {
+        duration: 5000
+      });
     }
-    else{
-      console.log("failed");
+    else {
+      this.snackBar.open("Couldn't copy to clipboard for some reason, try again.", null, {
+        duration: 10000
+      });
     }
   }
 
