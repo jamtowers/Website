@@ -60,6 +60,6 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## end-to-end tests
 
-Similar story to above, though I may use this to test the nav UI eventally.
+Similar story to above, though I may use this to test the nav UI eventually.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
