@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { ProjectsComponent } from './projects.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -10,7 +11,7 @@ describe('ProjectsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ProjectsComponent ],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, MatSnackBarModule]
     })
     .compileComponents();
   }));
