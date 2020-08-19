@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from '../project';
 import { ProjectsService } from '../projects.service';
-import { Title } from '@angular/platform-browser';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { TitleService } from '../../title.service';
 
 @Component({
   selector: 'app-project-details',
@@ -19,7 +20,7 @@ export class ProjectDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private projectsService: ProjectsService,
-    private titleService: Title,
+    private titleService: TitleService,
     private clipboard: Clipboard,
     private snackBar: MatSnackBar
   ) { }
@@ -34,7 +35,7 @@ export class ProjectDetailsComponent implements OnInit {
           .subscribe(params => {
             this.project = projects.find(project => project.name == params.get('projectName'));
 
-            this.titleService.setTitle( "James Towers - " + this.project.name );
+            this.titleService.setTitle(this.project.name);
 
             this.ploading = false;
           });

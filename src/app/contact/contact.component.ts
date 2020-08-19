@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { MessageService } from './message.service';
 import { HttpEventType } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TitleService } from '../title.service';
 
 @Component({
   selector: 'app-contact',
@@ -16,14 +16,15 @@ export class ContactComponent implements OnInit {
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
-  constructor(private titleService: Title, private messageService: MessageService, private snackBar: MatSnackBar) { }
+  constructor(private titleService: TitleService, private messageService: MessageService, private snackBar: MatSnackBar) {
+    this.titleService.setTitle("Contact");
+  }
 
   loading: boolean = false;
   error: string = '';
   message: string = '';
 
   ngOnInit() {
-    this.titleService.setTitle( "James Towers - Contact" );
   }
 
   contactForm = new FormGroup({

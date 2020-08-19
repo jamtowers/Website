@@ -7,6 +7,7 @@ import { Project } from './projects/project';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TitleService } from './title.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Website';
+  title = '';
   projects: Project[];
   themes = [
     // ['theme css name', 'Human readable name'],
@@ -28,7 +29,8 @@ export class AppComponent implements OnInit {
     private projectsService: ProjectsService,
     public overlayContainer: OverlayContainer,
     private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private titleService: TitleService
   ) {
     iconRegistry.addSvgIcon('github', sanitizer.bypassSecurityTrustResourceUrl('assets/images/GitHub-Mark.svg'));
   }
@@ -65,5 +67,8 @@ export class AppComponent implements OnInit {
     if(localStorage.theme) {
       this.setTheme(+localStorage.theme);
     }
+    this.titleService.title.subscribe((newTitle: string) => {
+      this.title = newTitle;
+    })
   }
 }

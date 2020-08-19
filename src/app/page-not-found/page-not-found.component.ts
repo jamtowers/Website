@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+
+import { TitleService } from '../title.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -8,10 +9,11 @@ import { Title } from '@angular/platform-browser';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: TitleService) {
+    this.titleService.setTitle("Page Not Found");
+  }
 
   ngOnInit() {
-    this.titleService.setTitle( "James Towers - Page Not Found" );
   }
 
 }
