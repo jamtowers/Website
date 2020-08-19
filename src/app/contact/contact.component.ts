@@ -75,6 +75,8 @@ export class ContactComponent implements OnInit {
           this.snackBar.open("Message Sent!", null, {
             duration: 5000
           });
+          // reset contact form
+          this.contactForm.reset();
           break;
       }
     }, error => { // on request error
