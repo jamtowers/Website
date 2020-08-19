@@ -35,7 +35,7 @@ The Github repo is mirrored on gitlab where the pipeline then runs, the pipeline
 
 The website is themed using [scss](https://sass-lang.com/) leveraging [Angular Material](https://material.angular.io/) components and mixins to theme the app, Angular handles the scss compliation so no additional programs or commands are needed.
 
-Currently the `theming.scss` file contins all theme colour configuration, this imports `theme-mixins.scss` which has all the app specific colour scss.
+Currently the `/src/themes/theming.scss` file contins all theme colour configuration, this imports `/src/themes/theme-mixins.scss` which has the theme colour configuration.
 
 The rest of the css config is in `styles.scss` (which has all the global css) and in component specific `scss` files.
 

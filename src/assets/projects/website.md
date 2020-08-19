@@ -14,8 +14,10 @@ While this is a SPA not everything is downloaded when you first load the page, W
 <!-- ### Navigation Animations
 (Not Implimented yet) -->
 
-<!-- ## Theme changing
-(Not Implimented yet) -->
+## Theme changing
+
+If you click on the palette icon at the top right you can change the theme used over the entire site, the theme id is saved on the browser so the next time you vist it will remain the same. Currently there are only 2 themes you can choose from, a dark theme (the default) and a light theme.
+This feature is totally unnecessary, I just wanted to see if I could do it.
 
 ## Document Generation
 
@@ -60,7 +62,7 @@ The Github repo is mirrored on gitlab where the pipeline then runs, the pipeline
 
 The website is themed using [scss](https://sass-lang.com/) leveraging [Angular Material](https://material.angular.io/) components and mixins to theme the app, Angular handles the scss compliation so no additional programs or commands are needed.
 
-Currently the `theming.scss` file contins all theme colour configuration, this imports `theme-mixins.scss` which has all the app specific colour scss.
+Currently the `/src/themes/theming.scss` file contins all theme colour configuration, this imports `/src/themes/theme-mixins.scss` which has the theme colour configuration.
 
 The rest of the css config is in `styles.scss` (which has all the global css) and in component specific `scss` files.
 

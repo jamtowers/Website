@@ -8,11 +8,21 @@
   </button>
   <span>&nbsp;James Towers</span>
   <span class="spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu" title="Change site theme">
+    <mat-icon class="toolbarIcon">palette</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button *ngFor="let theme of themes; let index=index;" mat-menu-item (click)="setTheme(index)">
+      <mat-icon *ngIf="activeTheme == index" class="selected">radio_button_checked</mat-icon>
+      <mat-icon *ngIf="activeTheme != index">radio_button_unchecked</mat-icon>
+      <span>{{theme[1]}}</span>
+    </button>
+  </mat-menu>
   <a mat-icon-button title="Go to Contact Page" routerLink="/contact" aria-label="Contact">
-    <mat-icon class="mailIcon">mail</mat-icon>
+    <mat-icon class="toolbarIcon">mail</mat-icon>
   </a>
   <a mat-icon-button title="Go to my GitHub Page" href="https://github.com/jamtowers" aria-label="GitHub">
-    <img height="32px" src="assets/images/GitHub-Mark.svg" />
+    <mat-icon height="32px" class="toolbarIcon" svgIcon="github"></mat-icon>
   </a>
   <a mat-icon-button title="Go to my LinkedIn page" href="https://www.linkedin.com/in/james-towers-62922a19b/" aria-label="Linkedin">
     <img height="32px" src="assets/images/LI-In-Bug-white.png" />

@@ -7,7 +7,7 @@
 // Define the default theme (same as the example above).
 $default-primary: mat-palette($mat-purple);
 $default-accent:  mat-palette($mat-green, A400, A200, A700);
-$default-warn:    mat-palette($mat-red);
+$default-warn:    mat-palette($mat-deep-orange);
 $default-theme:   mat-dark-theme($default-primary, $default-accent, $default-warn);
 
 // Include the default theme styles.
@@ -15,19 +15,13 @@ $default-theme:   mat-dark-theme($default-primary, $default-accent, $default-war
 // Include theme styles for custom components.
 @include app-theme($default-theme);
 
-// Light theme
-$light-primary: mat-palette($mat-blue-grey);
-$light-accent:  mat-palette($mat-amber, A200, A100, A400);
-$light-warn:    mat-palette($mat-deep-orange);
-$light-theme:   mat-dark-theme($light-primary, $light-accent, $light-warn);
+// Light theme`
+$light-primary: mat-palette($mat-teal);
+$light-accent:  mat-palette($mat-indigo, A400, A200, A700);
+$light-warn:    mat-palette($mat-red);
+$light-theme:   mat-light-theme($light-primary, $light-accent, $light-warn);
 
-// Include the alternative theme styles inside of a block with a CSS class. You can make this
-// CSS class whatever you want. In this example, any component inside of an element with
-// `.light-theme` will be affected by this alternate dark theme instead of the default theme.
 .light-theme {
   @include angular-material-theme($light-theme);
+  @include app-theme($light-theme);
 }
-
-
-
-

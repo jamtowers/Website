@@ -25,8 +25,11 @@
   margin-left: 5px;
 }
 
-.mailIcon{
+.toolbarIcon {
   width: 38px;
   font-size: 38px;
   text-align: center;
+  &[svgicon] {
+    height: 30px;
+  }
 }

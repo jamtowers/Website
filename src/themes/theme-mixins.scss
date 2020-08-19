@@ -20,6 +20,10 @@
     }
   }
 
+  mat-icon.selected  {
+    color: mat-color($accent) !important;
+  }
+
   .selected {
 
     &>* {
@@ -32,8 +36,7 @@
   }
 
   .material-icons.mat-card-image {
-    background-color: mat-color($foreground, disabled);
-    background: rgba(255, 255, 255, 0.08);
+    background-color: mat-color($background, disabled-button);
   }
 }
 

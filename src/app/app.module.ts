@@ -8,9 +8,9 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatTreeModule } from '@angular/material/tree';
 import { HttpClientModule } from '@angular/common/http';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,7 +34,7 @@ import { AboutComponent } from './about/about.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatTreeModule,
+    MatMenuModule,
     MatExpansionModule,
     AppRoutingModule,
     HttpClientModule
