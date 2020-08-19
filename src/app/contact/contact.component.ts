@@ -96,7 +96,7 @@ export class ContactComponent implements OnInit {
             break;
         }
       }
-    }, () => { // cleanup after requrest is complete
+    }, () => { // cleanup after request is complete
       request.unsubscribe();
       this.message = '';
     })
