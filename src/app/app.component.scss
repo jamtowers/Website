@@ -1,28 +1,10 @@
-.sidenav-container {
-  height: calc(100% - 64px);
-}
-
-.sidenav {
+mat-sidenav {
   width: 200px;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
-}
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-.content {
+mat-sidenav-content {
   display: flex;
   flex-direction: column;
-}
-
-.mat-toolbar>a {
-  margin-left: 5px;
 }
 
 .toolbarIcon {
@@ -32,4 +14,18 @@
   &[svgicon] {
     height: 30px;
   }
+}
+
+mat-toolbar {
+  flex: 0 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  &>a {
+    margin-left: 5px;
+  }
+}
+
+mat-sidenav-container {
+  flex: 1 1 auto;
 }
