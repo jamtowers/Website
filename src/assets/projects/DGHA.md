@@ -45,7 +45,7 @@ Users could only create an account if linked to a hidden page on the application
 
 ### My Contributions
 
-I was mainly tasked with working on the backend implementation of the project so I rarely touched the code on the mobile application, I was however still a part of the design a testing of the app, in particular I spent a lot of time doing accessibility testing on the app (Which was an important consideration for this project).
+I was mainly tasked with working on the backend implementation of the project so I rarely touched the code on the mobile application, I was however still a part of the design and testing of the app, in particular I spent a lot of time doing accessibility testing on the app (Which was an important consideration for this project).
 
 ---
 
