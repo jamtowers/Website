@@ -1,11 +1,11 @@
 This is the website I'm using as a portfolio/place to put my public facing projects, It's probably more complicated then it needs to be, but I like over-doing my own projects to keep things interesting.
-I don't have anything extra to add, But I feel like this section should be longer, enjoy your stay.`
+I don't have anything extra to add, But I feel like this section of text should be longer, enjoy your stay.
 
 # Features
 
 ## Routing
 
-As this is a SPA ([single page application](https://en.wikipedia.org/wiki/Single-page_application)) when you navigate between pages insted of loading the entire page again like a traditional website it only loads what it needs to load the new page, as a result navigating the site is much faster then a traditional site, and it has the added benifit of being less demanding on the server.
+As this is a SPA ([single page application](https://en.wikipedia.org/wiki/Single-page_application)) when you navigate between pages insted of loading the entire page again like a traditional website it only loads what it needs to load the new page, as a result navigating the site is much faster then a traditional site, and it has the added benefit of being less demanding on the server.
 
 ### Lazy Loading
 
