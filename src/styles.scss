@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "../node_modules/prismjs/themes/prism-okaidia.css";
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -30,20 +32,8 @@ footer {
   text-align: center;
 }
 
-/// Angular Material Overrides
-// sidebar
-.mat-drawer-inner-container {
-  .mat-expansion-panel-header {
-    padding: 0 16px !important;
-    font-size: 16px;
-  }
-
+mat-sidenav {
   .mat-expansion-panel-body {
     padding: 0;
-
-    &>a>div {
-      padding: 0 24px !important;
-      font-size: 15px;
-    }
   }
 }

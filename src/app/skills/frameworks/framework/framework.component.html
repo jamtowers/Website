@@ -1,0 +1,15 @@
+<div>
+  <span *ngIf="framework.related">
+    Related: <span *ngFor="let link of framework.related; let last = last;">
+      <a [routerLink]="link.path">{{link.name}}</a>
+      <span *ngIf="!last"> | </span>
+    </span>
+  </span>
+  <span class="spacer"></span>
+  <a *ngIf="framework.url" [href]="framework.url">{{framework.name}} docs</a>
+</div>
+
+<mat-progress-bar *ngIf="(loading && framework.markdown)" mode="indeterminate"></mat-progress-bar>
+<div *ngIf="framework.markdown">
+  <markdown [src]="'assets/frameworks/' + framework.markdown" (load)="loading = false"></markdown>
+</div>

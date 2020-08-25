@@ -38,6 +38,20 @@
   .material-icons.mat-card-image {
     background-color: mat-color($background, disabled-button);
   }
+
+  mat-sidenav {
+    a.selected {
+      border-left: 2px solid mat-color($accent, darker);
+    }
+    mat-expansion-panel {
+      a,mat-expansion-panel {
+        border-left: 2px solid mat-color($primary, darker);
+      }
+      .selected {
+        border-left: 3px solid mat-color($accent, darker);
+      }
+    }
+  }
 }
 
 // typography editing isn't needed atm

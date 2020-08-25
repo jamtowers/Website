@@ -6,7 +6,7 @@
     (click)="drawer.toggle()">
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
-  <span>&nbsp;{{title}}</span>
+  <span>{{title}}</span>
   <span class="spacer"></span>
   <button mat-icon-button [matMenuTriggerFor]="menu" title="Change site theme">
     <mat-icon class="toolbarIcon">palette</mat-icon>
@@ -43,16 +43,16 @@
         <a mat-list-item routerLink="/projects" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">Overview</a>
         <a *ngFor="let project of projects" mat-list-item routerLink="/projects/{{project.name}}" routerLinkActive="selected">{{project.name}}</a>
       </mat-expansion-panel>
-      <!-- <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="selected" #podd="routerLinkActive" [expanded]="podd.isActive ? true : false">
+      <mat-expansion-panel class="mat-elevation-z0" routerLinkActive="selected" #podd="routerLinkActive" [expanded]="podd.isActive ? true : false">
         <mat-expansion-panel-header>
-          <mat-panel-title>Portfolio</mat-panel-title>
+          <mat-panel-title>Skills</mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-list-item routerLink="/portfolio" routerLinkActive="selected">Noteworthy Achevements</a>
-        <a mat-list-item routerLink="/portfolio" routerLinkActive="selected">Concepts</a>
-        <a mat-list-item routerLink="/portfolio" routerLinkActive="selected">Languages</a>
-        <a mat-list-item routerLink="/portfolio" routerLinkActive="selected">Frameworks</a>
-      </mat-expansion-panel> -->
-      <!-- <a mat-list-item routerLink="/reference" routerLinkActive="selected">Reference</a> -->
+        <a mat-list-item routerLink="/skills" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">Overview</a>
+        <a mat-list-item routerLink="/skills/concepts" routerLinkActive="selected">Dev concepts</a>
+        <a mat-list-item routerLink="/skills/languages" routerLinkActive="selected">Languages</a>
+        <a mat-list-item routerLink="/skills/frameworks" routerLinkActive="selected">Frameworks</a>
+        <a mat-list-item routerLink="/skills/additional" routerLinkActive="selected">Additional</a>
+      </mat-expansion-panel>
       <a mat-list-item routerLink="/contact" routerLinkActive="selected">Contact</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -60,7 +60,7 @@
   <mat-sidenav-content>
     <router-outlet></router-outlet>
     <span class="spacer"></span>
-    <footer color="primary">
+    <footer>
       Copyright 2020 James Towers &copy;
     </footer>
   </mat-sidenav-content>

@@ -15,7 +15,7 @@ $default-theme:   mat-dark-theme($default-primary, $default-accent, $default-war
 // Include theme styles for custom components.
 @include app-theme($default-theme);
 
-// Light theme`
+// Light theme
 $light-primary: mat-palette($mat-teal);
 $light-accent:  mat-palette($mat-indigo, A400, A200, A700);
 $light-warn:    mat-palette($mat-red);
@@ -24,4 +24,5 @@ $light-theme:   mat-light-theme($light-primary, $light-accent, $light-warn);
 .light-theme {
   @include angular-material-theme($light-theme);
   @include app-theme($light-theme);
+  @import "node_modules/prismjs/themes/prism";
 }

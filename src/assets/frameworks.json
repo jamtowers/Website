@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Full example",
+    "competency": 10,
+    "url": "https://en.wikipedia.org/wiki/Programming_language",
+    "related": [
+      {
+        "name":"HTML",
+        "path": "skills/languages",
+        "fragment": "HTML 5"
+      },
+      {
+        "name":"SQL",
+        "path": "skills/languages",
+        "fragment": "SQL"
+      },
+      {
+        "name":"PHP",
+        "path": "skills/languages",
+        "fragment": "PHP"
+      }
+    ],
+    "markdown": "lang.md"
+  },
+  {
+    "name": "Angular",
+    "competency": 9
+  },
+  {
+    "name": "Entity Framework",
+    "competency": 5
+  },
+  {
+    "name": "Identity Server",
+    "competency": 2
+  },
+  {
+    "name": "React",
+    "competency": 6
+  },
+  {
+    "name": "Express",
+    "competency": 4
+  },
+  {
+    "name": ".NET Core",
+    "competency": 5
+  },
+  {
+    "name": "Django",
+    "competency": 7
+  },
+  {
+    "name": "Godot Engine",
+    "competency": 1
+  }
+]

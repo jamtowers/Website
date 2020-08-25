@@ -1,0 +1,5 @@
+<main>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+  <markdown src="assets/additional.md" (load)="loading = false"></markdown>
+</main>

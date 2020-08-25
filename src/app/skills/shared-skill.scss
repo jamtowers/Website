@@ -1,0 +1,22 @@
+mat-panel-title {
+  width: 6em;
+}
+
+mat-panel-description {
+  align-items: center;
+}
+
+div>div {
+  display: flex;
+  padding-left: 20px;
+  &>p {
+    font-weight: 500;
+    &:first-child {
+      flex-grow: 1;
+      width: 9em;
+    }
+    &:last-child {
+      flex-grow: 2;
+    }
+  }
+}

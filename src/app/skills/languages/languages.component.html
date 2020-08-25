@@ -1,0 +1,25 @@
+<main>
+  <h1>Languages</h1>
+  <div *ngFor="let section of languageSections">
+    <h2>{{section.name}}</h2>
+    <div>
+      <p>Language</p><p>Rough competency</p>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let language of section.languages" [expanded]="language.name == fragment ? true : false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{language.name}}
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-progress-bar mode="determinate" [value]="language.competency * 10"></mat-progress-bar>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <app-language [language]="language"></app-language>
+        </ng-template>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div style="height: 50vh;"></div>
+</main>

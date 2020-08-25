@@ -21,11 +21,25 @@ mat-toolbar {
   position: sticky;
   top: 0;
   z-index: 1;
-  &>a {
+  &>span,button,a {
     margin-left: 5px;
   }
 }
 
 mat-sidenav-container {
   flex: 1 1 auto;
+}
+
+mat-nav-list {
+  mat-expansion-panel-header {
+    padding: 0 16px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  mat-expansion-panel {
+    border-radius: 0px;
+  }
+  a.selected {
+    width: calc(100% - 2px);
+  }
 }

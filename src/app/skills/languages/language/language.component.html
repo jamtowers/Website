@@ -1,0 +1,16 @@
+<div>
+  <span *ngIf="language.related">
+    Related: <span *ngFor="let link of language.related; let last = last;">
+      <a [routerLink]="link.path" [fragment]="link.fragment">{{link.name}}</a>
+      <span *ngIf="!last"> | </span>
+    </span>
+  </span>
+  <span class="spacer"></span>
+  <a *ngIf="language.url" [href]="language.url">{{language.name}} docs</a>
+</div>
+
+<mat-progress-bar *ngIf="(loading && language.markdown) || (exampleLoading && language.exampleMarkdown)" mode="indeterminate"></mat-progress-bar>
+<div>
+  <markdown *ngIf="language.markdown" [src]="'assets/languages/' + language.markdown" (load)="loading = false"></markdown>
+  <markdown *ngIf="language.exampleMarkdown" [src]="'assets/languages/' + language.exampleMarkdown" (load)="exampleLoading = false"></markdown>
+</div>

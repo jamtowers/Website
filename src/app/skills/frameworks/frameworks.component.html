@@ -1,0 +1,19 @@
+<main>
+  <h1>Frameworks</h1>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let framework of frameworks" [expanded]="framework.name == fragment ? true : false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{framework.name}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-progress-bar mode="determinate" [value]="framework.competency * 10"></mat-progress-bar>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <app-framework [framework]="framework"></app-framework>
+      </ng-template>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div style="height: 50vh;"></div>
+</main>

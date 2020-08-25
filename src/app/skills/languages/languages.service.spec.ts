@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { ProjectsService } from './projects.service';
+import { LanguagesService } from './languages.service';
 
-describe('ProjectsService', () => {
-  let service: ProjectsService;
+describe('LanguagesService', () => {
+  let service: LanguagesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
-    service = TestBed.inject(ProjectsService);
+    service = TestBed.inject(LanguagesService);
   });
 
   it('should be created', () => {

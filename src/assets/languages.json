@@ -1,0 +1,73 @@
+[
+  {
+    "name": "Logical Languages",
+    "languages": [
+      {
+        "name": "Full example",
+        "competency": 10,
+        "url": "https://en.wikipedia.org/wiki/Programming_language",
+        "related": [
+          {
+            "name":"HTML",
+            "path": "skills/languages",
+            "fragment": "HTML 5"
+          },
+          {
+            "name":"SQL",
+            "path": "skills/languages",
+            "fragment": "SQL"
+          },
+          {
+            "name":"PHP",
+            "path": "skills/languages",
+            "fragment": "PHP"
+          }
+        ],
+        "markdown": "lang.md",
+        "exampleMarkdown": "html.eg.md"
+      },
+      {
+        "name": "C#",
+        "competency": 7
+      },
+      {
+        "name": "PHP",
+        "competency": 3
+      },
+      {
+        "name": "Javascript/Typescript",
+        "competency": 9
+      },
+      {
+        "name": "Python",
+        "competency": 6
+      }
+    ]
+  },
+  {
+    "name": "Data/Structure Languages",
+    "languages": [
+      {
+        "name": "HTML 5",
+        "competency": 9,
+        "exampleMarkdown": "lang.eg.md"
+      },
+      {
+        "name": "CSS3/SCSS",
+        "competency": 10
+      },
+      {
+        "name": "SQL",
+        "competency": 6
+      },
+      {
+        "name": "Json",
+        "competency": 10
+      },
+      {
+        "name": "Markdown",
+        "competency": 10
+      }
+    ]
+  }
+]
